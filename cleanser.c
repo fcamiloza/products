@@ -5,7 +5,7 @@
 
 
 // Max number of items per price range
-const int max_items = 2;
+const int max_items = 4;
 
 // Assign ranges for prices
 const float min_low = 1.99;
@@ -26,7 +26,9 @@ typedef struct
 product price_low[]=
 {
     {"Dry", "Dove Moisturizing Cleanser"},
-    {"Combination", "Lush Soap Bar"}
+    {"Combination", "Lush Soap Bar"},
+    {"Oily", "Brand Name Oily"},
+    {"Normal", "Brand Name Normal"}
 };
 
 // Struct for price range
