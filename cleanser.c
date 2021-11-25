@@ -8,11 +8,16 @@
 const int max_items = 4;
 
 // Assign ranges for prices
+// Low range
 const float min_low = 1.99;
-const float min_high = 9.99;
+const float min_high = 12.99;
 
-const float med_low = 10.00;
-const float med_high = 24.99;
+// Medium range
+const float med_low = 13.00;
+const float med_high = 25.99;
+
+// High range
+//TBD
 
 // Struct for skin type and brand
 typedef struct 
@@ -25,10 +30,19 @@ typedef struct
 // Products for low price range
 product price_low[]=
 {
-    {"Dry", "Dove Moisturizing Cleanser"},
-    {"Combination", "Lush Soap Bar"},
-    {"Oily", "Brand Name Oily"},
-    {"Normal", "Brand Name Normal"}
+    {"Dry", "CeraVe Hydrating Facial Cleanser, $3.99"},
+    {"Combination", "innisfree Hydrating Cleansing Foam with Green Tea, $10.00"},
+    {"Oily", "Cetaphil Pro Oil Removing Foam Wash, $9.79"},
+    {"Normal", "First Aid Beauty Pure Skin Face Cleanser, $11.00"}
+};
+
+// Products for medium price range
+product price_med[]=
+{
+    {"Dry", "LANEIGE Moisturizing Cream Cleanser, $23.00"},
+    {"Combination", "Kiehl's Ultra Facial Cleanser, $22.00"},
+    {"Oily", "Origins Checks and Balances Frothy Face Wash, $25.00"},
+    {"Normal", "Clinique Foaming Sonic Facial Soap, $22.50"}
 };
 
 // Struct for price range
@@ -55,22 +69,23 @@ int main()
     {   
         char str[32];
 
-        printf("What is your budget in USD? i.e. 1.00\n");
+        printf("What is your budget in USD? i.e. 2.00\n");
         scanf("%s", str);
         user.price = atof(str);
         printf("Budget: %.02f\n", user.price);
 
         // Ensure user enters a value of at least 1
-        if (user.price < 1.0)
+        if (user.price < 2.0)
         {
-            printf("Enter a value equal to or greater than 1");
+            printf("Enter a value equal to or greater than $2.00");
         }
 
 
     } 
-    while(user.price < 1.0);
+
+    while(user.price < 2.0);
     
-    // Print out product for the specified price
+    // Print out product for min price range
     if ( user.price >= min_low && user.price <= min_high)
     {
         for( int i = 0; i < max_items; i++)
@@ -81,6 +96,18 @@ int main()
                 printf("%s\n", price_low[i].brand);
             }
 
+        }
+    }
+
+    // Print out product for med price range
+    if ( user.price >= med_low && user.price <= med_high)
+    {
+        for( int i = 0; i < max_items; i++)
+        {
+            if (strcmp(user.skin_type, price_med[i].skin) == 0)
+            {
+                printf("%s\n", price_med[i].brand);
+            }
         }
     }
 }
